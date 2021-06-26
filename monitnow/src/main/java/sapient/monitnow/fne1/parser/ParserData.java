@@ -5,7 +5,7 @@ import sapient.monitnow.fne1.entities.Params.Direction;
 
 public class ParserData {
 
-	private ParserData(){
+	public ParserData(){
 
 	}
 
