@@ -1,4 +1,10 @@
 package sapient.monitnow.fne1.entities;
+/**
+ * 
+ * @author FNE1
+ * Entité Lawn representant la Pelouse/surface à tondre
+ *
+ */
 public class Lawn {
 
 	private Repere posMax;

@@ -2,6 +2,9 @@ package sapient.monitnow.fne1.entities;
 
 import sapient.monitnow.fne1.entities.Params.Direction;
 
+/*
+ * Position de la tondeuse
+ */
 public class PositionClipper {
 	
 	private Repere coordClipper;

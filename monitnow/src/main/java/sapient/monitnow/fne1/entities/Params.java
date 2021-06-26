@@ -2,18 +2,21 @@ package sapient.monitnow.fne1.entities;
 
 public class Params {
 
-	public static final String ERRORS_DATA = "données incorrectes";
-	public static final String ERRORS_FILES = "fichier inexistant";
-	public static final String ERROR_DIRECTEION = "orientation incorrecte";
-	public static final String ERROR_INSTRUCTION = "instruction incorrecte";
-	public static final String ERROR_POSITION = "position incorrecte";
+	public static final String ERRORS_DATA = "incorrect data";
+	public static final String ERRORS_FILES = "file not found";
+	public static final String ERROR_DIRECTEION = "incorrect direction";
+	public static final String ERROR_INSTRUCTION = "incorrect instruction";
+	public static final String ERROR_POSITION = "incorrect position";
 
 	private Params() {
 
 	}
 
+	/*
+	 * Les direction Cardinales
+	 */
 	public static enum Direction {
-		NORTH('N', "Nord"), EAST('E', "Est"), WEST('W', "Ouest"), SOUTH('S', "Sud");
+		NORTH('N', "North"), EAST('E', "East"), WEST('W', "West"), SOUTH('S', "South");
 
 		private char codeDirection;
 		private String descriptionDirection;
@@ -41,11 +44,8 @@ public class Params {
 
 	}
 
-	/**
-	 * instructions possibles
-	 * 
-	 * @author sgmira
-	 *
+	/*
+	 * Listes de mouvement possible
 	 */
 	public static enum ClipperPossibleInstruction {
 		RIGHT('D', "Pivoter droite"), LEFT('G', "Pivoter gauche"), MOOV('A', "Avancer");

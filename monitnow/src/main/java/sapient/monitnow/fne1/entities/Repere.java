@@ -1,5 +1,8 @@
 package sapient.monitnow.fne1.entities;
 
+/*
+ * Espace dans lequel evolue la tondeuse
+ */
 public class Repere {
 	
 	private int x;
@@ -11,6 +14,9 @@ public class Repere {
 	}
 	
 	
+	/*
+	 * retourne vrai si la tondeuse se trouve hors zone/perimetre defini
+	 */
 	public boolean isOutMaxRepere(Repere coord){
 		return coord.getX() >= 0 
 				&& coord.getY() >= 0
