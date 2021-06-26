@@ -9,6 +9,9 @@ import org.junit.Test;
 
 public class PosClipperTest {
 
+	/*
+	 * Test position de la tondeuse dans le repère
+	 */
 	@Test
 	public void Test1() {
 		

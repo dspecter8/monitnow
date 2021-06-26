@@ -9,6 +9,9 @@ import sapient.monitnow.fne1.entities.Repere;
 
 public class LawnTest {
 
+	/*
+	 * Test Equals de Lawn
+	 */
 	@Test
 	public void test1() {
 		Lawn lawn1 = new Lawn(new Repere(5, 2));

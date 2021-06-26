@@ -7,6 +7,9 @@ import sapient.monitnow.fne1.entities.Repere;
 
 public class RepereTest {
 
+	/**
+	 * Test method Equals
+	 */
 	@Test
 	public void test1(){
 		Repere c1 = new Repere(15, 9);
@@ -16,6 +19,9 @@ public class RepereTest {
 		assertThat(c1.equals(c2)).isFalse();
 	}
 	
+	/*
+	 * Test isOutMaxRepere
+	 */
 	@Test
 	public void test2(){
 		Repere r = new Repere(7,8);
