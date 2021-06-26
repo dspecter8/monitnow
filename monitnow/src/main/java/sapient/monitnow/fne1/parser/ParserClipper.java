@@ -48,4 +48,11 @@ public class ParserClipper {
 	public void setInstructions(String instructions) {
 		this.instructions = instructions;
 	}
+
+
+	public String getInstructions() {
+		return instructions;
+	}
+	
+	
 }
