@@ -6,20 +6,20 @@ import org.junit.Test;
 
 import sapient.monitnow.fne1.Controller.FormaterLine;
 import sapient.monitnow.fne1.Controller.ProcessInstrunction;
-import sapient.monitnow.fne1.Exception.ExceptionClipper;
+import sapient.monitnow.fne1.Exception.ExceptionMower;
 import sapient.monitnow.fne1.entities.Lawn;
 import sapient.monitnow.fne1.entities.Repere;
-import sapient.monitnow.fne1.entities.Params.ClipperPossibleInstruction;
+import sapient.monitnow.fne1.entities.Params.MowerPossibleInstruction;
 import sapient.monitnow.fne1.entities.Params.Direction;
-import sapient.monitnow.fne1.entities.PositionClipper;
+import sapient.monitnow.fne1.entities.PositionMower;
 
 public class TestControllers {
 
 	/*Test Controller FormaterLine*/
 	@Test
 	public void formaterDataIn1() {
-		assertThat(FormaterLine.FormaterLineClipper("12 11 N").getCoordClipper()).isEqualTo(new Repere(12, 11));
-		assertThat(FormaterLine.FormaterLineClipper("10 15 S").getDirectionClipper()).isEqualTo(Direction.SOUTH);
+		assertThat(FormaterLine.FormaterLineMower("12 11 N").getCoordMower()).isEqualTo(new Repere(12, 11));
+		assertThat(FormaterLine.FormaterLineMower("10 15 S").getDirectionMower()).isEqualTo(Direction.SOUTH);
 	}
 
 	@Test
@@ -30,9 +30,9 @@ public class TestControllers {
 	@Test
 	public void formaterDataIn3() {
 		assertThat(FormaterLine.formaterLigneInstruction("DGAD")).hasSize(4)
-				.contains(ClipperPossibleInstruction.RIGHT)
-				.contains(ClipperPossibleInstruction.LEFT)
-				.contains(ClipperPossibleInstruction.MOOV);
+				.contains(MowerPossibleInstruction.RIGHT)
+				.contains(MowerPossibleInstruction.LEFT)
+				.contains(MowerPossibleInstruction.GO);
 	}
 
 	@Test
@@ -47,29 +47,29 @@ public class TestControllers {
 	@Test
 	public void formaterDataIn5() {
 		
-		assertThat(FormaterLine.getInstruction('A')).isEqualTo(ClipperPossibleInstruction.MOOV);
-		assertThat(FormaterLine.getInstruction('D')).isEqualTo(ClipperPossibleInstruction.RIGHT);
-		assertThat(FormaterLine.getInstruction('G')).isEqualTo(ClipperPossibleInstruction.LEFT);
+		assertThat(FormaterLine.getInstruction('A')).isEqualTo(MowerPossibleInstruction.GO);
+		assertThat(FormaterLine.getInstruction('D')).isEqualTo(MowerPossibleInstruction.RIGHT);
+		assertThat(FormaterLine.getInstruction('G')).isEqualTo(MowerPossibleInstruction.LEFT);
 		assertThat(FormaterLine.getInstruction(' ')).isNull();
 	}
 	
 	/*Test Controller ProcessInstruction*/
 	
 	@Test
-	public void ProcessInstructionTest1() throws ExceptionClipper {
+	public void ProcessInstructionTest1() throws ExceptionMower {
 		Repere maxCoord = new Repere(5, 5);
 		int x = 2;
 		int y = 3;
 		Repere repere = new Repere(x, y);
-		PositionClipper positionTondeuse  = new  PositionClipper(repere,Direction.SOUTH);
-		ProcessInstrunction.executeInstruction(positionTondeuse, ClipperPossibleInstruction.RIGHT, maxCoord);
-		assertThat(positionTondeuse.getCoordClipper()).isEqualTo(new Repere(x, y));
-		assertThat(positionTondeuse.getDirectionClipper()).isEqualTo(Direction.WEST);
+		PositionMower positionTondeuse  = new  PositionMower(repere,Direction.SOUTH);
+		ProcessInstrunction.executeInstruction(positionTondeuse, MowerPossibleInstruction.RIGHT, maxCoord);
+		assertThat(positionTondeuse.getCoordMower()).isEqualTo(new Repere(x, y));
+		assertThat(positionTondeuse.getDirectionMower()).isEqualTo(Direction.WEST);
 	}
 	
 	
 	@Test
-	public void ProcessInstructionTest2() throws ExceptionClipper{
+	public void ProcessInstructionTest2() throws ExceptionMower{
 		
 		Direction  nextDirection = ProcessInstrunction.rotateRight(Direction.EAST);
 		assertThat(nextDirection).isEqualTo(Direction.SOUTH);
@@ -85,7 +85,7 @@ public class TestControllers {
 	}
 	
 	@Test
-	public void ProcessInstructionTest3() throws ExceptionClipper{
+	public void ProcessInstructionTest3() throws ExceptionMower{
 		Direction nextDirection = ProcessInstrunction.rotateLeft(Direction.EAST);
 		assertThat(nextDirection).isEqualTo(Direction.NORTH);
 		

@@ -1,26 +1,26 @@
 package sapient.monitnow.fne1.parser;
 
-public class ParserClipper {
+public class ParserMower {
 
 	private String lawn ;
-	private String clipper ;
+	private String mower ;
 	private String instructions ;
 
-	public ParserClipper() {
+	public ParserMower() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 
-	public ParserClipper(String lawn, String clipper, String instructions) {
+	public ParserMower(String lawn, String mower, String instructions) {
 		super();
 		this.lawn = lawn;
-		this.clipper = clipper;
+		this.mower = mower;
 		this.instructions = instructions;
 	}
 
 	public boolean executeParse(){
-		return ParserData.parseClipper(clipper)
+		return ParserData.parserMower(mower)
 				&& ParserData.parseLawn(lawn)
 				&& ParserData.parseListInstruction(instructions);
 	}
@@ -36,13 +36,13 @@ public class ParserClipper {
 	}
 
 
-	public String getClipper() {
-		return clipper;
+	public String getMower() {
+		return mower;
 	}
 
 
-	public void setClipper(String clipper) {
-		this.clipper = clipper;
+	public void setMower(String mower) {
+		this.mower = mower;
 	}
 
 	public void setInstructions(String instructions) {

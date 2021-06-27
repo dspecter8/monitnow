@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sapient.monitnow.fne1.entities.Lawn;
-import sapient.monitnow.fne1.entities.Params.ClipperPossibleInstruction;
+import sapient.monitnow.fne1.entities.Params.MowerPossibleInstruction;
 import sapient.monitnow.fne1.entities.Params.Direction;
-import sapient.monitnow.fne1.entities.PositionClipper;
+import sapient.monitnow.fne1.entities.PositionMower;
 import sapient.monitnow.fne1.entities.Repere;
 
 public class FormaterLine {
@@ -18,11 +18,11 @@ public class FormaterLine {
 	}
 
 
-	public static PositionClipper FormaterLineClipper(String lineClippser){
-		String[] elts = lineClippser.split(SPACE);
-		Repere coorClipper = new Repere(Integer.valueOf(elts[0]), Integer.valueOf(elts[1]));
-		Direction directionClipper = getDirection(elts[2].charAt(0));
-		return new PositionClipper(coorClipper, directionClipper);
+	public static PositionMower FormaterLineMower(String lineMower){
+		String[] elts = lineMower.split(SPACE);
+		Repere coorMower = new Repere(Integer.valueOf(elts[0]), Integer.valueOf(elts[1]));
+		Direction directionMower = getDirection(elts[2].charAt(0));
+		return new PositionMower(coorMower, directionMower);
 	}
 
 	
@@ -31,8 +31,8 @@ public class FormaterLine {
 		return new Lawn(new Repere(Integer.valueOf(elts[0]), Integer.valueOf(elts[1])));
 	}
 
-	public static List<ClipperPossibleInstruction> formaterLigneInstruction(String instructionElts){
-		List<ClipperPossibleInstruction> listInstruction = new ArrayList<ClipperPossibleInstruction>();
+	public static List<MowerPossibleInstruction> formaterLigneInstruction(String instructionElts){
+		List<MowerPossibleInstruction> listInstruction = new ArrayList<MowerPossibleInstruction>();
 		for(char instruction :instructionElts.toCharArray()){
 			listInstruction.add(getInstruction(instruction));
 		}
@@ -49,8 +49,8 @@ public class FormaterLine {
 	}
 
 	
-	public static ClipperPossibleInstruction getInstruction(char cInstruction){
-		for(ClipperPossibleInstruction instruction : ClipperPossibleInstruction.values()) {
+	public static MowerPossibleInstruction getInstruction(char cInstruction){
+		for(MowerPossibleInstruction instruction : MowerPossibleInstruction.values()) {
 			if (instruction.getCodeInstruction() == cInstruction) {
 				return instruction;
 			}

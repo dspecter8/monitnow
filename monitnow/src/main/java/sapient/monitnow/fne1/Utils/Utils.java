@@ -7,18 +7,18 @@ import java.util.List;
 import java.util.Scanner;
 
 import sapient.monitnow.fne1.Controller.FormaterLine;
-import sapient.monitnow.fne1.Controller.ProcessClipper;
-import sapient.monitnow.fne1.Exception.ExceptionClipper;
+import sapient.monitnow.fne1.Controller.ProcessMower;
+import sapient.monitnow.fne1.Exception.ExceptionMower;
 import sapient.monitnow.fne1.entities.Params;
-import sapient.monitnow.fne1.parser.ParserClipper;
+import sapient.monitnow.fne1.parser.ParserMower;
 public class Utils {
 
-	public List<String> runProcessClipper(File fichier)
-			throws ExceptionClipper, IOException {
+	public List<String> runProcessMower(File fichier)
+			throws ExceptionMower, IOException {
 		if (!fichier.isFile()) {
-			throw new ExceptionClipper(Params.ERRORS_FILES);
+			throw new ExceptionMower(Params.ERRORS_FILES);
 		} else {
-			ParserClipper parser = new ParserClipper();
+			ParserMower parser = new ParserMower();
 			Scanner scanner = new Scanner(fichier);
 			try {
 				readFirstLine(parser, scanner);
@@ -31,49 +31,49 @@ public class Utils {
 		}
 	}
 
-	protected void readFirstLine(ParserClipper parser, Scanner scanner)
-			throws ExceptionClipper {
+	protected void readFirstLine(ParserMower parser, Scanner scanner)
+			throws ExceptionMower {
 		if (scanner.hasNext()) {
 			parser.setLawn(scanner.nextLine());
 		}
 		if (!scanner.hasNext()) {
-			throw new ExceptionClipper(
+			throw new ExceptionMower(
 					Params.ERRORS_DATA);
 		}
 	}
 
 
-	private List<String> processNextLines(ParserClipper parser,
-			Scanner scanner) throws ExceptionClipper {
+	private List<String> processNextLines(ParserMower parser,
+			Scanner scanner) throws ExceptionMower {
 		List<String> listePositions = new ArrayList<String>();
 		while (scanner.hasNext()) {
 			// lecture de la positon initiale de la tondeuse
-			parser.setClipper(scanner.nextLine());
+			parser.setMower(scanner.nextLine());
 
 			if (scanner.hasNext()) {
 				parser.setInstructions(scanner.nextLine());
 				listePositions.add(parserEtLancerTraitement(parser));
 			} else {
-				throw new ExceptionClipper(Params.ERRORS_DATA);
+				throw new ExceptionMower(Params.ERRORS_DATA);
 			}
 		}
 		return listePositions;
 	}
 
 
-	private String parserEtLancerTraitement(ParserClipper parser)
-			throws ExceptionClipper {
+	private String parserEtLancerTraitement(ParserMower parser)
+			throws ExceptionMower {
 		if (!parser.executeParse()) {
-			throw new ExceptionClipper(Params.ERRORS_DATA);
+			throw new ExceptionMower(Params.ERRORS_DATA);
 		} else {
-			ProcessClipper processClipper = new ProcessClipper();
-			processClipper.setLawn(FormaterLine.formaterLineLawn(parser.getLawn()));
-			processClipper.setPosClipper(FormaterLine.FormaterLineClipper(parser.getClipper()));
+			ProcessMower processMower = new ProcessMower();
+			processMower.setLawn(FormaterLine.formaterLineLawn(parser.getLawn()));
+			processMower.setPosMower(FormaterLine.FormaterLineMower(parser.getMower()));
 	
-			processClipper.setListInstruction(FormaterLine.formaterLigneInstruction(parser.getInstructions()));
-			processClipper.executeInstruction();
-			System.out.println(processClipper);
-			return processClipper.toString();
+			processMower.setListInstruction(FormaterLine.formaterLigneInstruction(parser.getInstructions()));
+			processMower.executeInstruction();
+			System.out.println(processMower);
+			return processMower.toString();
 		}
 	}
 }

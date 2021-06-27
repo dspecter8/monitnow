@@ -1,10 +1,10 @@
 package sapient.monitnow.fne1.Controller;
 
-import sapient.monitnow.fne1.Exception.ExceptionClipper;
+import sapient.monitnow.fne1.Exception.ExceptionMower;
 import sapient.monitnow.fne1.entities.Params;
-import sapient.monitnow.fne1.entities.Params.ClipperPossibleInstruction;
+import sapient.monitnow.fne1.entities.Params.MowerPossibleInstruction;
 import sapient.monitnow.fne1.entities.Params.Direction;
-import sapient.monitnow.fne1.entities.PositionClipper;
+import sapient.monitnow.fne1.entities.PositionMower;
 import sapient.monitnow.fne1.entities.Repere;
 
 public  class ProcessInstrunction {
@@ -13,28 +13,28 @@ public  class ProcessInstrunction {
 
 	}
 	
-	public static Repere moovClipper(PositionClipper posClipper, Repere coordonnesMax) throws ExceptionClipper{
+	public static Repere moovMower(PositionMower posMower, Repere coordonnesMax) throws ExceptionMower{
 		Repere nextCoord = null;
 		int x, y;
-		switch (posClipper.getDirectionClipper()) {
+		switch (posMower.getDirectionMower()) {
 		case NORTH:
-			x = posClipper.getCoordClipper().getX();
-			y = posClipper.getCoordClipper().getY() + 1;
+			x = posMower.getCoordMower().getX();
+			y = posMower.getCoordMower().getY() + 1;
 			break;
 		case EAST:
-			x = posClipper.getCoordClipper().getX() + 1;
-			y = posClipper.getCoordClipper().getY();
+			x = posMower.getCoordMower().getX() + 1;
+			y = posMower.getCoordMower().getY();
 			break;
 		case SOUTH:
-			x = posClipper.getCoordClipper().getX();
-			y = posClipper.getCoordClipper().getY() - 1;
+			x = posMower.getCoordMower().getX();
+			y = posMower.getCoordMower().getY() - 1;
 			break;
 		case WEST:
-			x = posClipper.getCoordClipper().getX() - 1;
-			y = posClipper.getCoordClipper().getY();
+			x = posMower.getCoordMower().getX() - 1;
+			y = posMower.getCoordMower().getY();
 			break;
 		default:
-			throw new ExceptionClipper(Params.ERROR_POSITION);
+			throw new ExceptionMower(Params.ERROR_POSITION);
 		}
 		nextCoord = new Repere(x, y);
 		
@@ -42,12 +42,12 @@ public  class ProcessInstrunction {
 				&& coordonnesMax.isOutMaxRepere(nextCoord)) {
 			return nextCoord;
 		} else {
-			return posClipper.getCoordClipper();
+			return posMower.getCoordMower();
 		}
 	}
 	
 	
-	public static Direction rotateRight(Direction direction) throws ExceptionClipper{
+	public static Direction rotateRight(Direction direction) throws ExceptionMower{
 		Direction nextDirection = null ;
 		switch (direction){
 			case NORTH : 
@@ -63,13 +63,13 @@ public  class ProcessInstrunction {
 				nextDirection =  Direction.NORTH;
 				break;
 			default : 
-				throw new ExceptionClipper(Params.ERROR_DIRECTEION);
+				throw new ExceptionMower(Params.ERROR_DIRECTION);
 		}
 		return nextDirection;		
 	}
 	
 	
-	public static Direction rotateLeft(Direction direction) throws ExceptionClipper{
+	public static Direction rotateLeft(Direction direction) throws ExceptionMower{
 		Direction nextDirection = null ;
 		switch (direction){
 			case NORTH : 
@@ -85,24 +85,24 @@ public  class ProcessInstrunction {
 				nextDirection =  Direction.SOUTH; 
 				break;
 			default : 
-				throw new ExceptionClipper(Params.ERROR_DIRECTEION);
+				throw new ExceptionMower(Params.ERROR_DIRECTION);
 		}
 		return nextDirection;		
 	}
 
-	public static void executeInstruction(PositionClipper positionTondeuse, ClipperPossibleInstruction instruction,Repere coordonnesMax) throws ExceptionClipper{
+	public static void executeInstruction(PositionMower posMower, MowerPossibleInstruction instruction,Repere coordonnesMax) throws ExceptionMower{
 		
 		switch (instruction){
-			case MOOV : 
-				positionTondeuse.setCoordClipper(ProcessInstrunction.moovClipper(positionTondeuse, coordonnesMax)); 
+			case GO : 
+				posMower.setCoordMower(ProcessInstrunction.moovMower(posMower, coordonnesMax)); 
 				break;
 			case RIGHT : 
-				positionTondeuse.setDirectionClipper(ProcessInstrunction.rotateRight(positionTondeuse.getDirectionClipper())); 
+				posMower.setDirectionMower(ProcessInstrunction.rotateRight(posMower.getDirectionMower())); 
 				break;
 			case LEFT : 
-				positionTondeuse.setDirectionClipper(ProcessInstrunction.rotateLeft(positionTondeuse.getDirectionClipper())); 
+				posMower.setDirectionMower(ProcessInstrunction.rotateLeft(posMower.getDirectionMower())); 
 				break;
-			default: throw new ExceptionClipper(Params.ERROR_INSTRUCTION);
+			default: throw new ExceptionMower(Params.ERROR_INSTRUCTION);
 		}
 	}
 }

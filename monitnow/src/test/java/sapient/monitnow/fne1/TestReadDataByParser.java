@@ -5,9 +5,9 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 import sapient.monitnow.fne1.entities.Lawn;
-import sapient.monitnow.fne1.entities.PositionClipper;
+import sapient.monitnow.fne1.entities.PositionMower;
 import sapient.monitnow.fne1.entities.Repere;
-import sapient.monitnow.fne1.parser.ParserClipper;
+import sapient.monitnow.fne1.parser.ParserMower;
 import sapient.monitnow.fne1.parser.ParserData;
 import sapient.monitnow.fne1.entities.Params.Direction;
 
@@ -18,11 +18,11 @@ public class TestReadDataByParser {
 	
 	@Test
 	public void ParseData1(){
-		assertThat(ParserData.parseClipper("")).isFalse();
-		assertThat(ParserData.parseClipper("1 2 3")).isFalse();
-		assertThat(ParserData.parseClipper("12N")).isFalse();
-		assertThat(ParserData.parseClipper("1 2 N")).isTrue();
-		assertThat(ParserData.parseClipper("1 2 S")).isTrue();
+		assertThat(ParserData.parserMower("")).isFalse();
+		assertThat(ParserData.parserMower("1 2 3")).isFalse();
+		assertThat(ParserData.parserMower("12N")).isFalse();
+		assertThat(ParserData.parserMower("1 2 N")).isTrue();
+		assertThat(ParserData.parserMower("1 2 S")).isTrue();
 	}
 	
 	@Test
@@ -48,26 +48,29 @@ public class TestReadDataByParser {
 	
 	
 	// Test parser Clipper
-	ParserClipper clipper = new ParserClipper();
+	
 	@Test
 	public void ParserClipper1(){
-		
-		clipper.setInstructions("DGDGA");
-		clipper.setLawn("50 5");
-		clipper.setClipper("1 2 N");
-		assertThat(clipper.executeParse()).isTrue();
+		ParserMower mower = new ParserMower();
+		mower.setInstructions("DGDGA");
+		mower.setLawn("50 5");
+		mower.setMower("1 2 N");
+		assertThat(mower.executeParse()).isTrue();
 	}
 	@Test
 	
-	public void ParserClipperKO(){
-		clipper.setInstructions("DGDGA");
-		clipper.setClipper("0 -1");
-		clipper.setLawn("1 2 N");
-		assertThat(clipper.executeParse()).isFalse();
+	public void ParserMowerKO(){
+		ParserMower mower = new ParserMower();
+		mower.setInstructions("DGDGA");
+		mower.setMower("0 -1");
+		mower.setLawn("1 2 N");
+		assertThat(mower.executeParse()).isFalse();
 	}
 	
 	@Test
 	public void ParserClipperEmpty(){
-		assertThat(clipper.executeParse()).isFalse();
+		ParserMower mower = new ParserMower();
+		
+		assertThat(mower.executeParse()).isFalse();
 	}
 }

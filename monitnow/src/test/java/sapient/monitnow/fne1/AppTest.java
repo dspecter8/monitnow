@@ -8,7 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import sapient.monitnow.fne1.Exception.ExceptionClipper;
+import sapient.monitnow.fne1.Exception.ExceptionMower;
 
 /**
  * Unit test for simple App.
@@ -31,8 +31,8 @@ public class AppTest {
 	}
 	
 	@Test
-	public void main_fichier_erreur_fichier_xebia_ko() throws ExceptionClipper, IOException {
-		expectedEx.expect(ExceptionClipper.class);
+	public void main_fichier_erreur_fichier_xebia_ko() throws ExceptionMower, IOException {
+		expectedEx.expect(ExceptionMower.class);
 		expectedEx.expectMessage(sapient.monitnow.fne1.entities.Params.ERRORS_DATA);
 		App.main(pathResourceFiles + "testOK.txt");
 	}

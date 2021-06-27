@@ -1,6 +1,6 @@
 package sapient.monitnow.fne1.parser;
 
-import sapient.monitnow.fne1.entities.Params.ClipperPossibleInstruction;
+import sapient.monitnow.fne1.entities.Params.MowerPossibleInstruction;
 import sapient.monitnow.fne1.entities.Params.Direction;
 
 public class ParserData {
@@ -9,7 +9,7 @@ public class ParserData {
 
 	}
 
-	public static boolean parseClipper(String clipper){
+	public static boolean parserMower(String clipper){
 		StringBuilder stringBuilder = new StringBuilder("");
 		stringBuilder.append(Direction.NORTH.getCodeDirection())
 			.append("|").append(Direction.SOUTH.getCodeDirection())
@@ -20,9 +20,9 @@ public class ParserData {
 	
 	public static boolean parseListInstruction(String instructions){
 		StringBuilder stringBuilder = new StringBuilder("");
-		stringBuilder.append("(").append(ClipperPossibleInstruction.MOOV.getCodeInstruction())
-		.append("|").append(ClipperPossibleInstruction.RIGHT.getCodeInstruction())
-		.append("|").append(ClipperPossibleInstruction.LEFT.getCodeInstruction())
+		stringBuilder.append("(").append(MowerPossibleInstruction.GO.getCodeInstruction())
+		.append("|").append(MowerPossibleInstruction.RIGHT.getCodeInstruction())
+		.append("|").append(MowerPossibleInstruction.LEFT.getCodeInstruction())
 		.append(")+");
 
 		return instructions.matches(stringBuilder.toString());

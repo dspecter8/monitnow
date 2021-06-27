@@ -4,7 +4,7 @@ public class Params {
 
 	public static final String ERRORS_DATA = "incorrect data";
 	public static final String ERRORS_FILES = "file not found";
-	public static final String ERROR_DIRECTEION = "incorrect direction";
+	public static final String ERROR_DIRECTION = "incorrect direction";
 	public static final String ERROR_INSTRUCTION = "incorrect instruction";
 	public static final String ERROR_POSITION = "incorrect position";
 
@@ -47,13 +47,13 @@ public class Params {
 	/*
 	 * Listes de mouvement possible
 	 */
-	public static enum ClipperPossibleInstruction {
-		RIGHT('D', "Pivoter droite"), LEFT('G', "Pivoter gauche"), MOOV('A', "Avancer");
+	public static enum MowerPossibleInstruction {
+		RIGHT('D', "Pivoter droite"), LEFT('G', "Pivoter gauche"), GO('A', "Avancer");
 
 		private String descriptionInstruction;
 		private char codeInstruction;
 
-		private ClipperPossibleInstruction(char codeInstruction, String descriptionInstruction) {
+		private MowerPossibleInstruction(char codeInstruction, String descriptionInstruction) {
 			this.descriptionInstruction = descriptionInstruction;
 			this.codeInstruction = codeInstruction;
 		}
