@@ -70,6 +70,9 @@ public class TestReadDataByParser {
 	@Test
 	public void ParserMowerEmpty(){
 		ParserMower mower = new ParserMower();
+		mower.setInstructions("");
+		mower.setMower("");
+		mower.setLawn("");
 		assertThat(mower.executeParse()).isFalse();
 	}
 }

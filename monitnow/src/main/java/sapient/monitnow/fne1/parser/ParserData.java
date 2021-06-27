@@ -6,16 +6,16 @@ import sapient.monitnow.fne1.entities.Params.Direction;
 public class ParserData {
 
 	public ParserData(){
-
+		super();
 	}
 
-	public static boolean parserMower(String clipper){
+	public static boolean parserMower(String mover){
 		StringBuilder stringBuilder = new StringBuilder("");
 		stringBuilder.append(Direction.NORTH.getCodeDirection())
 			.append("|").append(Direction.SOUTH.getCodeDirection())
 			.append("|").append(Direction.EAST.getCodeDirection())
 			.append("|").append(Direction.WEST.getCodeDirection());
-		return clipper.matches("(\\d+) (\\d+) (" + stringBuilder.toString()+")");
+		return mover.matches("(\\d+) (\\d+) (" + stringBuilder.toString()+")");
 	}
 	
 	public static boolean parseListInstruction(String instructions){
