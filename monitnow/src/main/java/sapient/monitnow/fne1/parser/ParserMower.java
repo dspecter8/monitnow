@@ -7,8 +7,7 @@ public class ParserMower {
 	private String instructions ;
 
 	public ParserMower() {
-		//super();
-		// TODO Auto-generated constructor stub
+		super();
 	}
 	
 

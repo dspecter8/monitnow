@@ -5,8 +5,10 @@ package sapient.monitnow.fne1.Exception;
  */
 public class ExceptionMower extends Exception {
 
-	     public ExceptionMower(String message) {
+	
+	private static final long serialVersionUID = -7187105553991729739L;
+
+		public ExceptionMower(String message) {
 	           super(message);
-	          // System.out.println(message);
 	     }
 }

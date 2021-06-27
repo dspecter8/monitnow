@@ -52,7 +52,7 @@ public class Utils {
 
 			if (scanner.hasNext()) {
 				parser.setInstructions(scanner.nextLine());
-				listePositions.add(parserEtLancerTraitement(parser));
+				listePositions.add(runProcessParser(parser));
 			} else {
 				throw new ExceptionMower(Params.ERRORS_DATA);
 			}
@@ -61,7 +61,7 @@ public class Utils {
 	}
 
 
-	private String parserEtLancerTraitement(ParserMower parser)
+	private String runProcessParser(ParserMower parser)
 			throws ExceptionMower {
 		if (!parser.executeParse()) {
 			throw new ExceptionMower(Params.ERRORS_DATA);
