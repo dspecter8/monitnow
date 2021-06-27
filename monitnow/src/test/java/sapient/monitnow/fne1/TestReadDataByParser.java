@@ -50,7 +50,7 @@ public class TestReadDataByParser {
 	// Test parser Clipper
 	
 	@Test
-	public void ParserClipper1(){
+	public void ParserMower1(){
 		ParserMower mower = new ParserMower();
 		mower.setInstructions("DGDGA");
 		mower.setLawn("50 5");
@@ -61,16 +61,15 @@ public class TestReadDataByParser {
 	
 	public void ParserMowerKO(){
 		ParserMower mower = new ParserMower();
-		mower.setInstructions("DGDGA");
-		mower.setMower("0 -1");
+		mower.setInstructions("DGSDGDRTA");
+		mower.setMower("1 -2");
 		mower.setLawn("1 2 N");
 		assertThat(mower.executeParse()).isFalse();
 	}
 	
 	@Test
-	public void ParserClipperEmpty(){
+	public void ParserMowerEmpty(){
 		ParserMower mower = new ParserMower();
-		
 		assertThat(mower.executeParse()).isFalse();
 	}
 }
