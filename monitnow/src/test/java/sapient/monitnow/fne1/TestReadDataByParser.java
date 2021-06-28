@@ -30,10 +30,10 @@ public class TestReadDataByParser {
 		assertThat(ParserData.parseListInstruction("")).isFalse();
 		assertThat(ParserData.parseListInstruction(" ")).isFalse();
 		assertThat(ParserData.parseListInstruction("D G")).isFalse();
-		assertThat(ParserData.parseListInstruction("GGAAAGADDAN")).isFalse();
-		assertThat(ParserData.parseListInstruction("GGAAAG ADDAN")).isFalse();
-		assertThat(ParserData.parseListInstruction("DGA")).isTrue();
-		assertThat(ParserData.parseListInstruction("GGAAAGADDA")).isTrue();
+		assertThat(ParserData.parseListInstruction("GGAAAZZSDDAPS")).isFalse();
+		assertThat(ParserData.parseListInstruction("GGAAAG FREDFRED")).isFalse();
+		assertThat(ParserData.parseListInstruction("DGAAAA")).isTrue();
+		assertThat(ParserData.parseListInstruction("GGAAAAAADDDGADDA")).isTrue();
 	}
 	
 	@Test
