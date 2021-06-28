@@ -13,7 +13,7 @@ import sapient.monitnow.fne1.entities.Params.Direction;
 
 public class TestReadDataByParser {
 	
-	//Test Parser Data
+	//Test Parser Dataa
 	private ParserData ParserData = new ParserData() ;
 	
 	@Test
